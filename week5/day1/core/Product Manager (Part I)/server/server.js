@@ -1,9 +1,11 @@
 const express = require("express")
+const cors = require("cors")
 
 const app = express()
 
 // --- MIDDLEWARE --
 app.use(express.json(), express.urlencoded({ extended: true }))
+app.use(cors())
 
 
 require("dotenv").config()
