@@ -1,10 +1,12 @@
 import React, { useState }  from 'react'
 import axios from 'axios'
 
-const Form = () => {
+const Form = (props) => {
   const [title, setTitle] = useState("")
   const [price, setPrice] = useState(0)
   const [description, setDescription] = useState("")
+  const { refresh } = props
+ 
   const onSubmitProduct = (e) => {
     e.preventDefault()
     const newproduct = {
@@ -14,8 +16,8 @@ const Form = () => {
     }
     axios.post("http://localhost:5000/api/product", newproduct)
             .then(res => {
-                console.log("your Product is created  ✅")
-                
+                console.log("your Product is created  ✅") 
+                refresh()
             })
             .catch(err => {
                 console.log(err)

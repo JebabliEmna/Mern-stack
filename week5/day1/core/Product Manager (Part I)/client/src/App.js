@@ -1,13 +1,18 @@
 
 import './App.css';
-import Form from './components/Form';
+import Main from './views/Main';
+import { Route, Routes } from 'react-router-dom';
+import Details from './views/Details ';
 
 
 function App() {
 
   return (
     <div className="App">
-    <Form />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/MoreDetails/:id" element={<Details />} />
+      </Routes>
       
     </div>
   );
