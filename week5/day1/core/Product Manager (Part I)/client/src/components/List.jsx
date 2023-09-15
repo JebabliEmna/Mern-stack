@@ -24,7 +24,7 @@ const List = (props) => {
                 {
                    products.map((prod) => {
                     return <div key={prod._id}>
-                       <Link to={"/MoreDetails/" + prod._id}>{prod.Title}</Link >
+                       <Link to={"/" + prod._id}>{prod.Title}</Link >
                     </div>
     
                 })
