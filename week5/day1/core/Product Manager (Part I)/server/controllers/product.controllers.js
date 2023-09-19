@@ -10,7 +10,7 @@ module.exports.findALLProducts = (req, res) => {
 
             res.json({ allProducts })
         })
-        .catch(err => res.json({ message: "wait a minute 😏😏", error: err }))
+        .catch(err => res.json(err ))
 }
 
 // CREATE
@@ -23,7 +23,7 @@ module.exports.createProduct = (req, res) => {
                 newproduct
             })
         })
-        .catch(err => res.status(400).json({ message: "wait a minute 😏😏", error: err }))
+        .catch(err => res.status(400).json(err ))
 }
 
 
@@ -35,7 +35,7 @@ module.exports.findOneproduct = (req, res) => {
         .then(oneproduct => res.status(200).json({
             oneproduct
         })
-        ).catch(err => { res.status(400).json({ message: "wait a minute 😏😏", error: err }) })
+        ).catch(err => { res.status(400).json(err ) })
 }
 
 // Update
@@ -45,15 +45,15 @@ module.exports.updateOneProduct = (req, res) => {
         req.body,
         { new: true, runValidators: true }
     )
-        .then(updatedProduct => { res.json({ updatedProduct }) })
-        .catch(err => { res.json({ message: "wait a minute 😏😏", error: err }) })
+        .then(updatedProduct => { res.json(updatedProduct ) })
+        .catch(err => { res.status(400).json(err) })
 }
 // Delete
 
 module.exports.deleteProduct = (req, res) => {
     product.deleteOne({ _id: req.params.id })
         .then(result => { res.json({ result }) })
-        .catch(err => { res.json({ message: "wait a minute 😏😏", error: err }) })
+        .catch(err => { res.json(err) })
 
 
 }

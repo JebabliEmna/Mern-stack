@@ -17,14 +17,32 @@ const List = (props) => {
             })
     }, [refreshState])
 
+    const justDelete = (id) => {
+        axios.delete(`http://localhost:5000/api/product/${id}`)
+        //1:filter 
+        const filtereProducts = products.filter((oneprod) => {
+            if (oneprod._id == id) {
+                return false
+            } else {
+                return true
+
+            }
+        })
+        setProducts(filtereProducts)
+    }
+
     return (
             <div>
                 <hr/>
                 <h1>All Products:</h1>
                 {
                    products.map((prod) => {
-                    return <div key={prod._id}>
+                    return <div style={{padding:'10px'}} key={prod._id}>
                        <Link to={"/" + prod._id}>{prod.Title}</Link >
+                       <Link to={"/edit/" + prod._id}>edit</Link>
+                       <div style={{paddingLeft:'5px'}}>
+                        <button onClick={() => { justDelete(prod._id) }}>Delete</button>
+                       </div>
                     </div>
     
                 })
